@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "87795257-8666-4193-997c-a8dc1dbc74fc",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38903946"
+	},
+	"item": [
+		{
+			"name": "GetUserList",
+			"item": [
+				{
+					"name": "GetUserList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/60d0fe4f5311236168a109cb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"60d0fe4f5311236168a109cb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserList(negative case)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserList(page=0)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user?page=0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserList(page=dfgfd)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user?page=dfgfd",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "dfgfd"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CreateUser",
+			"item": [
+				{
+					"name": "CreateUser(without_firstname)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"miss\",\r\n    \"lastName\": \"Vestering\",\r\n    \"picture\": \"https://randomuser.me/api/portraits/med/women/89.jpg\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"edita.vestering@example.com\",\r\n    \"dateOfBirth\": \"1956-04-15T00:10:35.555Z\",\r\n    \"phone\": \"(019)-646-0430\",\r\n    \"location\": {\r\n        \"street\": \"1371, Dilledonk-Zuid\",\r\n        \"city\": \"Den Bommel\",\r\n        \"state\": \"Gelderland\",\r\n        \"country\": \"Netherlands\",\r\n        \"timezone\": \"-5:00\"\r\n    },\r\n    \"registerDate\": \"2021-06-21T21:02:07.533Z\",\r\n    \"updatedDate\": \"2021-06-21T21:02:07.533Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser(firstname=\"1\")",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"miss\",\r\n    \"firstName\": \"E\",\r\n    \"lastName\": \"Vestering\",\r\n    \"picture\": \"https://randomuser.me/api/portraits/med/women/89.jpg\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"edita.vestering@example.com\",\r\n    \"dateOfBirth\": \"1956-04-15T00:10:35.555Z\",\r\n    \"phone\": \"(019)-646-0430\",\r\n    \"location\": {\r\n        \"street\": \"1371, Dilledonk-Zuid\",\r\n        \"city\": \"Den Bommel\",\r\n        \"state\": \"Gelderland\",\r\n        \"country\": \"Netherlands\",\r\n        \"timezone\": \"-5:00\"\r\n    },\r\n    \"registerDate\": \"2021-06-21T21:02:07.533Z\",\r\n    \"updatedDate\": \"2021-06-21T21:02:07.533Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser(firstname=\"2\")",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"miss\",\r\n    \"firstName\": \"LG\",\r\n    \"lastName\": \"Vestering\",\r\n    \"picture\": \"https://randomuser.me/api/portraits/med/women/89.jpg\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"dateOfBirth\": \"1956-04-15T00:10:35.555Z\",\r\n    \"phone\": \"(019)-646-0430\",\r\n    \"location\": {\r\n        \"street\": \"1371, Dilledonk-Zuid\",\r\n        \"city\": \"Den Bommel\",\r\n        \"state\": \"Gelderland\",\r\n        \"country\": \"Netherlands\",\r\n        \"timezone\": \"-5:00\"\r\n    },\r\n    \"registerDate\": \"2021-06-21T21:02:07.533Z\",\r\n    \"updatedDate\": \"2021-06-21T21:02:07.533Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetListTag",
+			"item": [
+				{
+					"name": "GetListTag",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GetListTag(page=5)",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{app-id}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "app-id",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

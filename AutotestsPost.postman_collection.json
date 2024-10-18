@@ -1,0 +1,655 @@
+{
+	"info": {
+		"_postman_id": "4bd9d527-a276-43dc-98eb-188b08e06f8b",
+		"name": "AutotestsPost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38903946"
+	},
+	"item": [
+		{
+			"name": "GetPostList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is ОК\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check body data is string\", function () {\r",
+							"    pm.expect(jsonData.data).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[0].id is string\", function () {\r",
+							"    pm.expect(jsonData.data[0].id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[0].email is undefined\", function () {\r",
+							"    pm.expect(jsonData.data[0].email).to.be.an('undefined');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[19].id is string\", function () {\r",
+							"    pm.expect(jsonData.data[19].id).to.be.an('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[20].id is undefined\", function () {\r",
+							"    pm.expect(jsonData.data[20]).to.be.an('undefined');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body limit is 20\", function () {\r",
+							"    pm.expect(jsonData.limit).to.eql(20);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body page is 0\", function () {\r",
+							"    pm.expect(jsonData.page).to.eql(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body total is number\", function () {\r",
+							"    pm.expect(jsonData.total).to.be.a(\"number\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/post/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is ОК\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.collectionVariables.set(\"userID\", jsonData.id);\r",
+							"\r",
+							"pm.test(\"Check body title\", function () {\r",
+							" //   console.log(\"выводим значение city\");\r",
+							" //   console.log(jsonData.location.city);\r",
+							"    pm.expect(jsonData.title).to.eql(\"miss\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body firstname\", function () {\r",
+							"    pm.expect(jsonData.firstName).to.eql(\"LGGG\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body lastname\", function () {\r",
+							"    pm.expect(jsonData.lastName).to.eql(\"VVVestering\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body picture\", function () {\r",
+							"    pm.expect(jsonData.picture).to.eql(\"https://randomuser.me/api/portraits/med/women/89.jpg\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body gender\", function () {\r",
+							"    pm.expect(jsonData.gender).to.eql(\"female\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body dateOfBirth\", function () {\r",
+							"    pm.expect(jsonData.dateOfBirth).to.eql(\"1956-04-15T00:10:35.555Z\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body phone\", function () {\r",
+							"    pm.expect(jsonData.phone).to.eql(\"(019)-646-0430\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.street\", function () {\r",
+							"    pm.expect(jsonData.location.street).to.eql(\"1371, Dilledonk-Zuid\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.city\", function () {\r",
+							"    pm.expect(jsonData.location.city).to.eql(\"Den Bommel\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.state\", function () {\r",
+							"    pm.expect(jsonData.location.state).to.eql(\"Gelderland\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.country\", function () {\r",
+							"    pm.expect(jsonData.location.country).to.eql(\"Netherlands\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.timezone\", function () {\r",
+							"    pm.expect(jsonData.location.timezone).to.eql(\"-5:00\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body email is string\", function () {\r",
+							"    pm.expect(jsonData.email).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body id is string\", function () {\r",
+							"    pm.expect(jsonData.id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body registerDate is string\", function () {\r",
+							"    pm.expect(jsonData.registerDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body updatedDate is string\", function () {\r",
+							"    pm.expect(jsonData.updatedDate).to.be.a('string');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"miss\",\r\n    \"firstName\": \"LGGG\",\r\n    \"lastName\": \"VVVestering\",\r\n    \"picture\": \"https://randomuser.me/api/portraits/med/women/89.jpg\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"dateOfBirth\": \"1956-04-15T00:10:35.555Z\",\r\n    \"phone\": \"(019)-646-0430\",\r\n    \"location\": {\r\n        \"street\": \"1371, Dilledonk-Zuid\",\r\n        \"city\": \"Den Bommel\",\r\n        \"state\": \"Gelderland\",\r\n        \"country\": \"Netherlands\",\r\n        \"timezone\": \"-5:00\"\r\n    },\r\n    \"registerDate\": \"2021-06-21T21:02:07.533Z\",\r\n    \"updatedDate\": \"2021-06-21T21:02:07.533Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user/create",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Snippet - Status code: Code is 200 (снипет на проверку статус кода)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Snippet - Status code: Code name has string (снипет на проверку текста у статус кода)\r",
+							"pm.test(\"Status code is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Snippet - Response time is less than 200ms (снипет на проверку времени ответа сервера)\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"//Snippet - Response body: JSON value check (снипет на проверку ключей и значений в теле ответа).\r",
+							"//Позволяет обратиться к значению ключа и сверить его с заданныи изначально\r",
+							"//jsonData - переменная. \r",
+							"//console - выводим значение в Console. Так делать полезно при отладке, когда необходимо понимание того, что сейчас я должен вывести\r",
+							"//Так как мы часто используем этот снипет и в нем постоянно повторяется функция - var jsonData = pm.response.json() ТО ее можно вывсети за функцию, а в снипетах удалить\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"//Snippet - Set a collection variable. ПОзвояет создать переменную и дать ей значение из тела нашего ответа, к примеру значение id. После этого переменная userId. Данная переменная создастся автоматически под коллекцией на табе Variables\r",
+							"//pm.collectionVariables.set(\"variable_key\", \"variable_value\") переделываем -> pm.collectionVariables.set(\"userID\", \"jsonData.id\");\r",
+							"\r",
+							"pm.collectionVariables.set(\"postID\", jsonData.id);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check body key=image\", function () {\r",
+							"    //console.log(\"выводим значение id\");\r",
+							"    //console.log(jsonData.id);\r",
+							"    pm.expect(jsonData.image).to.eql(\"http://placeimg.com/640/480\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=likes\", function () {\r",
+							"    pm.expect(jsonData.likes).to.eql(100);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=link\", function () {\r",
+							"    pm.expect(jsonData.link).to.eql(\"mazay@gmail.com\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=tags\", function () {\r",
+							"    pm.expect(jsonData.tags).to.eql([\"mazay\"]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=text\", function () {\r",
+							"    pm.expect(jsonData.text).to.eql(\"Новый комментарий для теста - урок4\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> title>\", function () {\r",
+							"    pm.expect(jsonData.owner.title).to.eql(\"miss\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> firstName\", function () {\r",
+							"    pm.expect(jsonData.owner.firstName).to.eql(\"LGGG\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> lastName\", function () {\r",
+							"    pm.expect(jsonData.owner.lastName).to.eql(\"VVVestering\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> picture\", function () {\r",
+							"    pm.expect(jsonData.owner.picture).to.eql(\"https://randomuser.me/api/portraits/med/women/89.jpg\");\r",
+							"});\r",
+							"\r",
+							"//Так как некоторый атрибуты генерятся автоматически: ID, publishDate, updatedDate то нам нужно испозовать другой код.Его нет в снипетах, но есть в доп библитеке chaijs - expect('foo').to.be.a('string');\r",
+							"\r",
+							"pm.test(\"Check body id is string\", function () {\r",
+							"pm.expect(jsonData.id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body publishDate is string\", function () {\r",
+							"pm.expect(jsonData.publishDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body updatedDate is string\", function () {\r",
+							"pm.expect(jsonData.updatedDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"http://placeimg.com/640/480\",\r\n    \"likes\": 100,\r\n    \"link\": \"mazay@gmail.com\",\r\n    \"tags\": \"mazay\",\r\n    \"text\": \"Новый комментарий для теста - урок4\",\r\n    \"owner\": \"{{userID}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/post/create",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPostById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Snippet - Status code: Code is 200 (снипет на проверку статус кода)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Snippet - Status code: Code name has string (снипет на проверку текста у статус кода)\r",
+							"pm.test(\"Status code is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Snippet - Response time is less than 200ms (снипет на проверку времени ответа сервера)\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"//Snippet - Response body: JSON value check (снипет на проверку ключей и значений в теле ответа).\r",
+							"//Позволяет обратиться к значению ключа и сверить его с заданныи изначально\r",
+							"//jsonData - переменная. \r",
+							"//console - выводим значение в Console. Так делать полезно при отладке, когда необходимо понимание того, что сейчас я должен вывести\r",
+							"//Так как мы часто используем этот снипет и в нем постоянно повторяется функция - var jsonData = pm.response.json() ТО ее можно вывсети за функцию, а в снипетах удалить\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"//Snippet - Set a collection variable. ПОзвояет создать переменную и дать ей значение из тела нашего ответа, к примеру значение id. После этого переменная userId. Данная переменная создастся автоматически под коллекцией на табе Variables\r",
+							"//pm.collectionVariables.set(\"variable_key\", \"variable_value\") переделываем -> pm.collectionVariables.set(\"userID\", \"jsonData.id\");\r",
+							"\r",
+							"//pm.collectionVariables.set(\"postID\", jsonData.id);\r",
+							"\r",
+							"pm.test(\"Check body key=image\", function () {\r",
+							"    //console.log(\"выводим значение id\");\r",
+							"    //console.log(jsonData.id);\r",
+							"    pm.expect(jsonData.image).to.eql(\"http://placeimg.com/640/480\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=likes\", function () {\r",
+							"    pm.expect(jsonData.likes).to.eql(100);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=link\", function () {\r",
+							"    pm.expect(jsonData.link).to.eql(\"mazay@gmail.com\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=tags\", function () {\r",
+							"    pm.expect(jsonData.tags).to.eql([\"mazay\"]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=text\", function () {\r",
+							"    pm.expect(jsonData.text).to.eql(\"Новый комментарий для теста - урок4\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> title>\", function () {\r",
+							"    pm.expect(jsonData.owner.title).to.eql(\"miss\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> firstName\", function () {\r",
+							"    pm.expect(jsonData.owner.firstName).to.eql(\"LGGG\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> lastName\", function () {\r",
+							"    pm.expect(jsonData.owner.lastName).to.eql(\"VVVestering\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> picture\", function () {\r",
+							"    pm.expect(jsonData.owner.picture).to.eql(\"https://randomuser.me/api/portraits/med/women/89.jpg\");\r",
+							"});\r",
+							"\r",
+							"//Так как некоторый атрибуты генерятся автоматически: ID, publishDate, updatedDate то нам нужно испозовать другой код.Его нет в снипетах, но есть в доп библитеке chaijs - expect('foo').to.be.a('string');\r",
+							"\r",
+							"pm.test(\"Check body id is string\", function () {\r",
+							"pm.expect(jsonData.id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body publishDate is string\", function () {\r",
+							"pm.expect(jsonData.publishDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body updatedDate is string\", function () {\r",
+							"pm.expect(jsonData.updatedDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/post/{{postID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"{{postID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Snippet - Status code: Code is 200 (снипет на проверку статус кода)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Snippet - Status code: Code name has string (снипет на проверку текста у статус кода)\r",
+							"pm.test(\"Status code is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Snippet - Response time is less than 200ms (снипет на проверку времени ответа сервера)\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"//Snippet - Response body: JSON value check (снипет на проверку ключей и значений в теле ответа).\r",
+							"//Позволяет обратиться к значению ключа и сверить его с заданныи изначально\r",
+							"//jsonData - переменная. \r",
+							"//console - выводим значение в Console. Так делать полезно при отладке, когда необходимо понимание того, что сейчас я должен вывести\r",
+							"//Так как мы часто используем этот снипет и в нем постоянно повторяется функция - var jsonData = pm.response.json() ТО ее можно вывсети за функцию, а в снипетах удалить\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"//Snippet - Set a collection variable. ПОзвояет создать переменную и дать ей значение из тела нашего ответа, к примеру значение id. После этого переменная userId. Данная переменная создастся автоматически под коллекцией на табе Variables\r",
+							"//pm.collectionVariables.set(\"variable_key\", \"variable_value\") переделываем -> pm.collectionVariables.set(\"userID\", \"jsonData.id\");\r",
+							"\r",
+							"//pm.collectionVariables.set(\"postID\", jsonData.id);\r",
+							"\r",
+							"pm.test(\"Check body key=image\", function () {\r",
+							"    //console.log(\"выводим значение id\");\r",
+							"    //console.log(jsonData.id);\r",
+							"    pm.expect(jsonData.image).to.eql(\"http://placeimg.com/640/480\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=likes\", function () {\r",
+							"    pm.expect(jsonData.likes).to.eql(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=link\", function () {\r",
+							"    pm.expect(jsonData.link).to.eql(\"mazay@gmail.com\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=tags\", function () {\r",
+							"    pm.expect(jsonData.tags).to.eql([\"mazay\"]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=text\", function () {\r",
+							"    pm.expect(jsonData.text).to.eql(\"Новый комментарий для теста - урок4_апдейт\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> title>\", function () {\r",
+							"    pm.expect(jsonData.owner.title).to.eql(\"miss\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> firstName\", function () {\r",
+							"    pm.expect(jsonData.owner.firstName).to.eql(\"LGGG\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> lastName\", function () {\r",
+							"    pm.expect(jsonData.owner.lastName).to.eql(\"VVVestering\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body key=owner -> picture\", function () {\r",
+							"    pm.expect(jsonData.owner.picture).to.eql(\"https://randomuser.me/api/portraits/med/women/89.jpg\");\r",
+							"});\r",
+							"\r",
+							"//Так как некоторый атрибуты генерятся автоматически: ID, publishDate, updatedDate то нам нужно испозовать другой код.Его нет в снипетах, но есть в доп библитеке chaijs - expect('foo').to.be.a('string');\r",
+							"\r",
+							"pm.test(\"Check body id is string\", function () {\r",
+							"pm.expect(jsonData.id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body publishDate is string\", function () {\r",
+							"pm.expect(jsonData.publishDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body updatedDate is string\", function () {\r",
+							"pm.expect(jsonData.updatedDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"likes\": 500,\r\n    \"text\": \"Новый комментарий для теста - урок4_апдейт\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/post/{{postID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"{{postID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Snippet - Status code: Code is 200 (снипет на проверку статус кода)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Snippet - Status code: Code name has string (снипет на проверку текста у статус кода)\r",
+							"pm.test(\"Status code is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Snippet - Response time is less than 200ms (снипет на проверку времени ответа сервера)\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(pm.collectionVariables.get(\"postID\"));\r",
+							"});\r",
+							"\r",
+							"//Snippet - Get a collection variable. Позволяет вытащить значение переменной\r",
+							"//console.log(pm.collectionVariables.get(\"postID\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/post/{{postID}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"{{postID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "app-id",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{app-id}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userID",
+			"value": ""
+		},
+		{
+			"key": "postID",
+			"value": ""
+		},
+		{
+			"key": "ddd",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

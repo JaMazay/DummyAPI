@@ -1,0 +1,524 @@
+{
+	"info": {
+		"_postman_id": "f6e190bd-d7ea-47bb-ba6a-d0d87e40d864",
+		"name": "AutotestsUser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38903946"
+	},
+	"item": [
+		{
+			"name": "GetUserList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is ОК\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check body data is array\", function () {\r",
+							"    pm.expect(jsonData.data).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[0].id is string\", function () {\r",
+							"    pm.expect(jsonData.data[0].id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[0].email is undefined\", function () {\r",
+							"    pm.expect(jsonData.data[0].email).to.be.a('undefined');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[19].id is string\", function () {\r",
+							"    pm.expect(jsonData.data[19].id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body data[20].id is undefined\", function () {\r",
+							"    pm.expect(jsonData.data[20]).to.be.an('undefined');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check limit is 20\", function () {\r",
+							"    pm.expect(jsonData.limit).to.eql(20);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check page is 0\", function () {\r",
+							"    pm.expect(jsonData.page).to.eql(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body total is number\", function () {\r",
+							"    pm.expect(jsonData.total).to.be.a('number');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is ОК\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.collectionVariables.set(\"userId\", jsonData.id);\r",
+							"\r",
+							"pm.test(\"Check body title\", function () {\r",
+							" //   console.log(\"выводим значение city\");\r",
+							" //   console.log(jsonData.location.city);\r",
+							"    pm.expect(jsonData.title).to.eql(\"miss\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body firstname\", function () {\r",
+							"    pm.expect(jsonData.firstName).to.eql(\"LG\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body lastname\", function () {\r",
+							"    pm.expect(jsonData.lastName).to.eql(\"Vestering\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body picture\", function () {\r",
+							"    pm.expect(jsonData.picture).to.eql(\"https://randomuser.me/api/portraits/med/women/89.jpg\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body gender\", function () {\r",
+							"    pm.expect(jsonData.gender).to.eql(\"female\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body dateOfBirth\", function () {\r",
+							"    pm.expect(jsonData.dateOfBirth).to.eql(\"1956-04-15T00:10:35.555Z\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body phone\", function () {\r",
+							"    pm.expect(jsonData.phone).to.eql(\"(019)-646-0430\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.street\", function () {\r",
+							"    pm.expect(jsonData.location.street).to.eql(\"1371, Dilledonk-Zuid\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.city\", function () {\r",
+							"    pm.expect(jsonData.location.city).to.eql(\"Den Bommel\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.state\", function () {\r",
+							"    pm.expect(jsonData.location.state).to.eql(\"Gelderland\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.country\", function () {\r",
+							"    pm.expect(jsonData.location.country).to.eql(\"Netherlands\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.timezone\", function () {\r",
+							"    pm.expect(jsonData.location.timezone).to.eql(\"-5:00\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body email is string\", function () {\r",
+							"    pm.expect(jsonData.email).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body id is string\", function () {\r",
+							"    pm.expect(jsonData.id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body registerDate is string\", function () {\r",
+							"    pm.expect(jsonData.registerDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body updatedDate is string\", function () {\r",
+							"    pm.expect(jsonData.updatedDate).to.be.a('string');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"miss\",\r\n    \"firstName\": \"LG\",\r\n    \"lastName\": \"Vestering\",\r\n    \"picture\": \"https://randomuser.me/api/portraits/med/women/89.jpg\",\r\n    \"gender\": \"female\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"dateOfBirth\": \"1956-04-15T00:10:35.555Z\",\r\n    \"phone\": \"(019)-646-0430\",\r\n    \"location\": {\r\n        \"street\": \"1371, Dilledonk-Zuid\",\r\n        \"city\": \"Den Bommel\",\r\n        \"state\": \"Gelderland\",\r\n        \"country\": \"Netherlands\",\r\n        \"timezone\": \"-5:00\"\r\n    },\r\n    \"registerDate\": \"2021-06-21T21:02:07.533Z\",\r\n    \"updatedDate\": \"2021-06-21T21:02:07.533Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user/create",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is ОК\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.collectionVariables.set(\"userId\", jsonData.id);\r",
+							"\r",
+							"pm.test(\"Check body title\", function () {\r",
+							" //   console.log(\"выводим значение city\");\r",
+							" //   console.log(jsonData.location.city);\r",
+							"    pm.expect(jsonData.title).to.eql(\"miss\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body firstname\", function () {\r",
+							"    pm.expect(jsonData.firstName).to.eql(\"LG\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body lastname\", function () {\r",
+							"    pm.expect(jsonData.lastName).to.eql(\"Vestering\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body picture\", function () {\r",
+							"    pm.expect(jsonData.picture).to.eql(\"https://randomuser.me/api/portraits/med/women/89.jpg\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body gender\", function () {\r",
+							"    pm.expect(jsonData.gender).to.eql(\"female\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body dateOfBirth\", function () {\r",
+							"    pm.expect(jsonData.dateOfBirth).to.eql(\"1956-04-15T00:10:35.555Z\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body phone\", function () {\r",
+							"    pm.expect(jsonData.phone).to.eql(\"(019)-646-0430\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.street\", function () {\r",
+							"    pm.expect(jsonData.location.street).to.eql(\"1371, Dilledonk-Zuid\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.city\", function () {\r",
+							"    pm.expect(jsonData.location.city).to.eql(\"Den Bommel\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.state\", function () {\r",
+							"    pm.expect(jsonData.location.state).to.eql(\"Gelderland\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.country\", function () {\r",
+							"    pm.expect(jsonData.location.country).to.eql(\"Netherlands\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.timezone\", function () {\r",
+							"    pm.expect(jsonData.location.timezone).to.eql(\"-5:00\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body email is string\", function () {\r",
+							"    pm.expect(jsonData.email).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body id is string\", function () {\r",
+							"    pm.expect(jsonData.id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body registerDate is string\", function () {\r",
+							"    pm.expect(jsonData.registerDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body updatedDate is string\", function () {\r",
+							"    pm.expect(jsonData.updatedDate).to.be.a('string');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/{{userId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is ОК\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.collectionVariables.set(\"userId\", jsonData.id);\r",
+							"\r",
+							"pm.test(\"Check body title\", function () {\r",
+							" //   console.log(\"выводим значение city\");\r",
+							" //   console.log(jsonData.location.city);\r",
+							"    pm.expect(jsonData.title).to.eql(\"mess\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body firstname\", function () {\r",
+							"    pm.expect(jsonData.firstName).to.eql(\"LGG\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body lastname\", function () {\r",
+							"    pm.expect(jsonData.lastName).to.eql(\"VVestering\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body picture\", function () {\r",
+							"    pm.expect(jsonData.picture).to.eql(\"https://randomuser.me/api/portraits/med/women/89.jpg\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body gender\", function () {\r",
+							"    pm.expect(jsonData.gender).to.eql(\"female\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body dateOfBirth\", function () {\r",
+							"    pm.expect(jsonData.dateOfBirth).to.eql(\"1956-04-15T00:10:35.555Z\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body phone\", function () {\r",
+							"    pm.expect(jsonData.phone).to.eql(\"(019)-646-0430\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.street\", function () {\r",
+							"    pm.expect(jsonData.location.street).to.eql(\"1371, Dilledonk-Zuid\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.city\", function () {\r",
+							"    pm.expect(jsonData.location.city).to.eql(\"Den Bommel\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.state\", function () {\r",
+							"    pm.expect(jsonData.location.state).to.eql(\"Gelderland\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.country\", function () {\r",
+							"    pm.expect(jsonData.location.country).to.eql(\"Netherlands\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body location.timezone\", function () {\r",
+							"    pm.expect(jsonData.location.timezone).to.eql(\"-5:00\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body email is string\", function () {\r",
+							"    pm.expect(jsonData.email).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body lid is string\", function () {\r",
+							"    pm.expect(jsonData.id).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body registerDate is string\", function () {\r",
+							"    pm.expect(jsonData.registerDate).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body updatedDate is string\", function () {\r",
+							"    pm.expect(jsonData.updatedDate).to.be.a('string');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"mess\",\r\n    \"firstName\": \"LGG\",\r\n    \"lastName\": \"VVestering\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user/{{userId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is ОК\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(pm.collectionVariables.get(\"userId\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/{{userId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{app-id}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "app-id",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}

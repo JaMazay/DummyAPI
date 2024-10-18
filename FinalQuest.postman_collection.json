@@ -1,0 +1,539 @@
+{
+	"info": {
+		"_postman_id": "b2717027-35e8-4ea9-94b8-0c1813a053de",
+		"name": "FinalQuest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38903946"
+	},
+	"item": [
+		{
+			"name": "GetToken(autorization)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"quest\",\r\n    \"password\": \"fkjsh34kj32454!\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Host_FiinalQuest}}/login",
+					"host": [
+						"{{Host_FiinalQuest}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAuthor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host_FiinalQuest}}/author",
+					"host": [
+						"{{Host_FiinalQuest}}"
+					],
+					"path": [
+						"author"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAuthorById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Host_FiinalQuest}}/author/3468",
+					"host": [
+						"{{Host_FiinalQuest}}"
+					],
+					"path": [
+						"author",
+						"3468"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateAuthor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"firstName\": \"Иван\",\r\n        \"lastName\": \"Иванов\",\r\n        \"photo\": \"{{$randomImageUrl}}\",\r\n        \"dateOfBirth\": \"2/3/2020\",\r\n        \"about\": \"тест\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v202/author/add",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v202",
+						"author",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAuthor",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 3470,\r\n        \"firstName\": \"Иван2\",\r\n        \"lastName\": \"Иванов34\",\r\n        \"photo\": \"{{$randomImageUrl}}\",\r\n        \"dateOfBirth\": \"2/3/2020\",\r\n        \"about\": \"тест\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v202/author/3470",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v202",
+						"author",
+						"3470"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAuthor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v202/author/3466",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v202",
+						"author",
+						"3466"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBook",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v391/book",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v391",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBookId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v391/book/5578",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v391",
+						"book",
+						"5578"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBookByAuthorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v391/author/21/book",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v391",
+						"author",
+						"21",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Название\",\r\n    \"published\": \"2024\",\r\n    \"genre\": 1234,\r\n    \"annotation\": 123456,\r\n    \"amount\": 34,\r\n    \"likes\": \"два\",\r\n    \"type\": \"all\",\r\n    \"authorId\": 21\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v391/book/add",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v391",
+						"book",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateBookPut",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Книга Илая1\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v391/book/5589",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v391",
+						"book",
+						"5589"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateBookPatch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"title\": \"Книга Илая2\",\r\n    \"published\": \"2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v391/book/5589",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v391",
+						"book",
+						"5589"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v391/book/5578",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v391",
+						"book",
+						"5578"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReview",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v485/review",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v485",
+						"review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReviewById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v485/review/1957",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v485",
+						"review",
+						"1957"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReviewBookById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v485/review/4030/book",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v485",
+						"review",
+						"4030",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateReview",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"userName\": \"4тайм414\",\r\n    \"avatar\": \"https://avatarko.ru/img/kartinka/1/avatarko_anonim1234567.jpg\",\r\n    \"review\": \"1\",\r\n    \"raiting\": 0,\r\n\r\n    \"bookId\": 1510\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v485/review/add",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v485",
+						"review",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateReview",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"4тайм414\",\r\n    \"review\": \"1\",\r\n    \"bookId\": 1510,\r\n    \"avatar\": \"123\",\r\n    \"raiting\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v485/review/3475",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v485",
+						"review",
+						"3475"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteReview",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://apiquest.sedtest-tools.ru:3000/v485/review/8574398579345",
+					"protocol": "http",
+					"host": [
+						"apiquest",
+						"sedtest-tools",
+						"ru"
+					],
+					"port": "3000",
+					"path": [
+						"v485",
+						"review",
+						"8574398579345"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{request_token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "request_token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
